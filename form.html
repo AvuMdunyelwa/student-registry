@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>form</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+
+<header>
+    <nav>   
+        <div id="header">
+            <div id="header-logo">
+                <img src="images/logo.svg" alt="logo">
+                
+                <h1>
+                    Student Registry
+                </h1>
+            </div>
+            
+            
+            <ul id="header-cta">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Notes</a></li>
+                <li><a href="#">Email</a></li>
+                <li>
+                    <button>account</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div id="wrapper">
+        <div id="intro">
+            <p>
+                <i>*Student's information is confidential and should'nt be misused 
+                or distributed to third party.</i>
+            </p>     
+        </div>
+
+        <div id="cta">
+                <button id="edit-btn">edit</button>
+                <button id="open-form"><img src="images/bx-plus.svg" alt="edit-icon"></button>
+        </div>
+
+        <div id="student-table-info">
+            <table id="table">
+                <tr id="headings">
+                    <th id="edit-column"></th>
+                    <th>Student Number</th>
+                    <th >Name</th>
+                    <th >Email</th>
+                    <th >Course</th>
+                    <th >Attendance</th>
+                </tr>
+
+               
+            </table>
+            <h3>
+            No data saved. <br>
+            Select '+' to add data.
+            </h3>
+        </div>
+    </div>
+
+    <dialog id="modal">
+        <div id="close-form">
+            <img src="images/bx-x.svg" alt="close-icon">
+        </div>
+        <div id="form-details">
+            <div id="hero-section">
+                <h1>
+                    Please fill in the form
+                </h1>
+            </div>
+            <form action="#">
+    
+                <div id="names">
+                    <label for="name">
+                        Name
+                        <input type="text" id="name-input" name="name" required>
+                    </label>
+                    <label for="name">
+                        Surname
+                        <input type="text" id="surname-input" name="surname" required>
+                    </label>
+                </div>
+    
+                <label for="Email">Email</label>
+                <input type="email" name="email" id="email">
+                
+                <label for="studNumber">Student number</label>
+                <input type="text" id="studNumber" name="studNumber" required>
+                
+                <label for="course">Course</label>
+                <div id="dropdown-menu">
+                    <input type="text" id="course" name="course" required>
+                    <button type="button" id="courses-menu-btn">
+                        <img src="images/bx-chevron-down.svg" alt="bx-chevron-down">
+                    </button>
+                </div>
+                <div id="courses-list">
+                    <ul>
+                        <li>Bachelor of Arts</li>
+                        <li>Bachelor of Science</li>
+                        <li>Bachelor of Accounting</li>
+                        <li>Bachelor of Education</li>
+                        <li>Bachelor of Pharmarcy</li>
+                        <li>Bachelor of Computer science</li>
+                        <li>Bachelor of Medicine</li>
+                        <li>Bachelor of Information technology</li>
+                        <li>Bachelor of Law</li>
+                        <li>Bachelor of Agriculture</li>
+                        <li>Bachelor of Business studies</li>
+                    </ul>
+                </div>
+                
+                <div id="questionaiire">
+                    <h2>
+                        Attendance
+                    </h2>
+    
+                        <label id="Full-time">
+                            <input type="radio" value="Full-time" name="Attendance" id="checkbox" />
+                            Full-time
+                        </label>
+                    
+                        <label id="Part-time">
+                            <input type="radio" value="Part-time" name="Attendance" id="checkbox" />
+                            Part-time
+                        </label>
+                    
+                </div>
+    
+                <div id="form-cta">
+                    <input type="submit" value="submit" id="subButton">
+                    <input type="reset" value="reset" id="resButton">
+                </div>
+    
+            </form>
+        </div>
+    </dialog>
+    <dialog id="modal" class="edit-form">
+        <div id="close-form">
+            <img src="images/bx-x.svg" alt="close-icon">
+        </div>
+        <div id="form-details">
+            <div id="hero-section">
+                <h1>
+                    Edit information
+                </h1>
+            </div>
+            <form action="#">
+    
+                <div id="names">
+                    <label for="name">
+                        Name
+                        <input type="text" id="name-input" name="name" required>
+                    </label>
+                    <label for="name">
+                        Surname
+                        <input type="text" id="surname-input" name="surname" required>
+                    </label>
+                </div>
+    
+                <label for="Email">Email</label>
+                <input type="email" name="email" id="email" required>
+                
+                <label for="studNumber">Student number</label>
+                <input type="text" id="studNumber" name="studNumber" required>
+                
+                <label for="course">Course</label>
+                <div id="dropdown-menu">
+                    <input type="text" id="course" name="course" required>
+                    <button type="button" id="courses-menu-btn">
+                        <img src="images/bx-chevron-down.svg" alt="bx-chevron-down">
+                    </button>
+                </div>
+                <div id="courses-list">
+                    <ul>
+                        <li>Bachelor of Arts</li>
+                        <li>Bachelor of Science</li>
+                        <li>Bachelor of Accounting</li>
+                        <li>Bachelor of Education</li>
+                        <li>Bachelor of Pharmarcy</li>
+                        <li>Bachelor of Computer science</li>
+                        <li>Bachelor of Medicine</li>
+                        <li>Bachelor of Information technology</li>
+                        <li>Bachelor of Law</li>
+                        <li>Bachelor of Agriculture</li>
+                        <li>Bachelor of Business studies</li>
+                    </ul>
+                </div>
+                
+                <div id="questionaiire">
+                    <h2>
+                        Attendance
+                    </h2>
+    
+                        <label id="Full-time">
+                            <input type="radio" value="Full-time" name="Attendance" id="checkbox" />
+                            Full-time
+                        </label>
+                    
+                        <label id="Part-time">
+                            <input type="radio" value="Part-time" name="Attendance" id="checkbox" />
+                            Part-time
+                        </label>
+                    
+                </div>
+    
+                <div id="form-cta">
+                    <input type="submit" value="save" id="savButton">
+                    <input type="reset" value="reset" id="resButton">
+                </div>
+    
+            </form>
+        </div>
+    </dialog>
+
+    <dialog id="edit-all-information">
+        <div id="close-edit-student">
+            <img src="images/bx-x.svg" alt="close-icon">
+        </div>
+        <div id="edit-wrapper">
+            <button id="edit-student-info">Edit</button>
+            <button id="delete-btn">Delete</button>
+        </div>
+    </dialog>
+</main>
+
+
+    <script src="form.js"></script>
+</body>
+</html>

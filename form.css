@@ -1,0 +1,452 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: 'poppins';
+    width: 100vw;
+    height: 100vh;
+}
+
+#wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    padding: 0.9em;
+    
+}
+
+header {
+    width: 100%;
+    background-color: rgb(255, 244, 231);
+    position: fixed;
+    
+    nav {
+        padding: 0.9em;
+        width: auto;
+    }
+}
+
+#header {
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    #header-logo {
+    gap: 0.9em;
+    display: inline-flex;
+    align-items: center;
+    
+    h1 {
+        font-size: 1.5rem;
+
+    }
+
+    img {
+        max-width: 8%;
+    }
+
+    }
+    
+    #header-cta {
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 1em;
+    
+    button {
+    padding: 0.3em 1em;
+    font-family: 'poppins';
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: rgb(235, 82, 0);
+    border: none;
+    color: white;
+    cursor: pointer;
+    justify-self: start;
+    
+    &:hover {
+        background-color: rgb(255, 119, 45);
+    }
+
+    &:active {
+        background-color: rgb(237, 83, 0);
+    }
+}
+}
+
+    li a {
+        text-decoration: none;
+        color: rgb(21, 21, 21);
+    }
+}
+
+#intro {
+    display: grid;
+    p {
+        margin-top: 5rem;
+    }
+}
+
+#modal,
+#edit-all-information {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: rgba(169, 169, 169, 0.319);
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+#edit-wrapper {
+    position: fixed;
+    background-color: rgb(41, 41, 41);
+    justify-self: center;
+    width: 40%;
+    top: 25%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    transition: 0.3s ease-in-out;
+
+    button {
+    width: 20vw;
+    height: 10vh;
+    font-family: 'poppins';
+    font-size: 1.1rem;
+    background-color: cornflowerblue;
+    border: none;
+    color: white;
+    cursor: pointer;
+    justify-self: start;
+
+    &:hover {
+        background-color: rgb(68, 114, 200);
+    }
+
+    &:active {
+        background-color: royalblue;
+    }
+        
+}
+    
+}
+
+
+#form-details {
+    position: fixed;
+    right: 20%;
+    margin: 0.5rem;
+    width: 55%;
+    height: 98%;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    border: 1px solid black;
+    transition: 0.3s ease-in-out;
+    font-family: 'poppin#';
+}
+
+#hero-section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url(images/pexels-pixabay-267885.jpg);
+    background-position: bottom top;
+    background-size: cover;
+    color: white;
+}
+
+#close-form {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    width: 100%;
+    max-width: 2%;
+    margin: 0.5rem;
+    cursor: pointer;
+    
+    img {
+        background-color: rgb(255, 255, 255);
+    }
+}
+
+#close-edit-student {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    width: 100%;
+    max-width: 2%;
+    margin: 0.5rem;
+    cursor: pointer;
+    
+    img {
+        background-color: rgb(255, 255, 255);
+    }
+}
+
+form {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 100%;
+    display: grid;
+    padding: 1em;
+    position: relative;
+
+    input {
+        width: auto;
+        height: 5vh;
+        outline: none;
+        padding-left: 0.5em;
+    }
+
+    #names {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        label {
+            width: 48%;
+        }
+
+        input {
+            width: 100%;
+        }
+    }
+}
+
+#questionaiire {
+    margin: 1rem 0;
+    font-size: 1rem;
+    display: grid;
+    justify-items: left;
+    gap: 0.5em;
+    
+    label {
+        gap: 0.5em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+#form-cta {
+    display: flex;
+    gap: 1em;
+}
+
+#subButton,
+#resButton, #savButton {
+    padding: 0;
+    margin-top: 1rem;
+    font-family: 'poppins';
+    font-size: 1.1rem;
+    width: 20%;
+    height: 65%;
+    background-color: bisque;
+    border: none;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    text-align: center;
+
+    &:hover {
+        background-color: burlywood;
+    }
+
+    &:active {
+        background-color: burlywood;
+    }
+}
+
+#student-table-info {
+    margin-top: 1.7rem;
+    
+}
+
+table {
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 1rem;
+    color: rgb(43, 43, 43);
+    width: 99%;
+
+    #headings {
+        background-color: bisque;
+    }
+}
+
+tr {
+    height: 10vh;
+}
+
+td {
+    border: 1px solid rgba(108, 108, 108, 0.239);
+    width: 23vw;
+    background-color: rgb(255, 255, 255);
+    color: rgb(43, 43, 43);
+    font-weight: 500;
+}
+
+
+#courses-list {
+    visibility: hidden;
+    background-color: rgb(232, 232, 232);
+    position: absolute;
+    align-self: center;
+    margin-left: 1em;
+    top: 54%;
+    z-index: 10;
+    width: 52.3vw;
+    height: 30%;
+    overflow-y: auto;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+    
+    ul {
+        scroll-snap-type: mandatory;
+        list-style: none;
+        
+    }
+    
+    li {
+        height: 6%;
+        padding: 0.2em;
+        border: 0.8px solid rgb(136, 136, 136);
+        cursor: pointer;
+        
+        &:hover {
+            border: 0.8px solid rgb(108, 108, 108);
+            background-color: rgb(200, 200, 200);
+        }
+    }
+}
+
+/* scrollbar */
+    ::-webkit-scrollbar {
+        width: 3px;
+        
+    }
+
+    ::-webkit-scrollbar-track {
+       background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: rgb(0, 0, 0);
+        border-radius: 15px;
+    }
+
+#dropdown-menu {
+    width: auto;
+    height: 5vh;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid rgb(98, 98, 98);
+    border-radius: 3px;
+    
+    input {
+        width: 100%;
+    }
+    
+    #courses-menu-btn {
+        border: none;
+        border-right: 1px solid black;
+        height: 100%;
+        img {
+            height: 100%;
+            cursor: pointer;
+            border-radius: 3px;
+            
+        }
+        &:hover {
+            background-color: rgb(180, 180, 180);
+        }
+    }
+}
+
+h3 {
+    text-align: center;
+    color: rgba(117, 117, 117, 0.675);
+    margin-top: 4rem;
+}
+
+#edit-column {
+    display: none;
+}
+
+.edit-student {
+    width: 4vw;
+    height: 10vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        cursor: pointer;
+        max-width: 100%;
+    }
+}
+
+table.editing .edit-student {
+    display: grid;
+}
+
+
+#cta {
+    background-color: rgb(255, 244, 231);
+    padding: 0.4em;
+    border-radius: 12px;
+    gap: 0.5em;
+    width: 7%;
+    height: 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 6%;
+    right: 2%;
+
+    #edit-btn {
+        font-weight: 700;
+        width: 50%;
+        background-color: transparent;
+
+        &:hover {
+            background-color: rgb(255, 218, 198);
+        }
+    }
+
+    button {
+        width: 50%;
+        border-radius: 6px;
+        background-color: rgb(235, 82, 0);
+        border: none;
+        height: 100%;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgb(255, 119, 45);
+        }
+    }
+}
