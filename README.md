@@ -21,7 +21,6 @@ Prevents empty or invalid submissions.
 -Fully Dynamic Table
 Uses JavaScript to generate, update, and manage table rows.
 
-<img width="1359" height="629" alt="screenshot-1763371333116" src="https://github.com/user-attachments/assets/f5d7e991-a082-4c53-b0fa-b1c846129b3e" />
 
 🧱 Technologies Used
 
@@ -31,3 +30,15 @@ CSS3 – Styling and responsive design
 
 JavaScript (ES6) – Logic, DOM manipulation, event listeners
 
+<img width="1159" height="629" alt="screenshot-1763371333116" src="https://github.com/user-attachments/assets/f5d7e991-a082-4c53-b0fa-b1c846129b3e" />
+<img width="1355" height="635" alt="screenshot-student-registry3" src="https://github.com/user-attachments/assets/fdc56b9a-178c-4cc8-a728-1a744e6b2f76" />
+
+🧪 Possible Future Enhancements
+
+-LocalStorage to save data after reload
+
+-Search/filter students
+
+-Sort table by name or age
+
+-Backend integration (Node.js, Express, database)
