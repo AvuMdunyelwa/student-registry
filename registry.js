@@ -4,69 +4,102 @@ const surnameInput = document.querySelector('#surname-input');
 let courseInput = document.querySelector('#course');
 const stuNumber = document.querySelector('#studNumber');
 const stuEmail = document.querySelector('#email');
-const resetBtn = document.querySelector('#resButton');
-const addStudentBtn = document.querySelector('#open-form');
-const closeForm = document.querySelector('#close-form');
-const closeEditStudent = document.querySelector('#close-edit-student');
 const modal = document.querySelector('#modal');
 const form = document.querySelector('form');
-const dropDownBtn = document.querySelector('#courses-menu-btn');
-const dropDownMenu = document.querySelector('#courses-list');
-const allCourses = document.querySelectorAll('li');
 const editIconColumn = document.querySelector('#edit-column');
 const infoTable = document.querySelector('table');
 const callToAction = document.querySelector('#edit-all-information');
 const editStudentInfo = document.querySelector('#edit-student-info');
 const editingForm = document.querySelector('.edit-form');
-let editInfo;
-let studentNumDelete;
-let index = 0;
+const rowWrapper = document.querySelector('.row-wrapper');
 
 //flag
 let isCourseMenuOpen = false;
 let isEdited = false;
-let isAddingInfo = true;
-
 
 // variables
-
+let index = 0;
 const studentInfo = [];
+let currentRow;
+let deleteInfo;
+let currentIndex;
 
 
 // event listeners
-addStudentBtn.addEventListener('click', () => {
-    modal.show();
-});
-
-closeForm.addEventListener('click', () => {
-    modal.close();
-    editingForm.close()
-});
-
-closeEditStudent.addEventListener('click', () => {
-    callToAction.close();
-});
-
-dropDownBtn.addEventListener('click', () => {
-
-    if(!isCourseMenuOpen) {
-        isCourseMenuOpen = true;
-        dropDownMenu.style.visibility = 'visible';
-        dropDownMenu.style.opacity = '1';
-        displayCourse();
-        
-    }else {
-        dropDownMenu.style.visibility = 'hidden';
-        isCourseMenuOpen = false;
+document.addEventListener('click', (e) => {
+    //edit all information
+    if (e.target.classList == "edit-menu") {
+        if (studentInfo.length <= 0) {
+            e.preventDefault();
+            return;
+        }  
+    
+        if (!isEdited) {
+            editAllInfo.innerHTML = "Close";
+            infoTable.classList.add("editing");
+            editIconColumn.style.display = "block";
+            isEdited = true;
+        }else {
+            editAllInfo.innerHTML = "Edit";
+            infoTable.classList.remove("editing");
+            editIconColumn.style.display = "none";
+            isEdited = false;
+        }
     }
+
+    //add student
+    ;
+    if (e.target.classList == "add-student") {
+        modal.show();
+    }
+
+    //close add form
+    if (e.target.classList == "cancel-adding") {
+        modal.close();
+        editingForm.close()
+
+    }
+
+    //cancel editing student info
+    if (e.target.classList == "cancel-editing") {
+        const closeRow = document.querySelector('.edt');
+        if(closeRow) {
+            closeRow.classList.remove('edt');
+        };
+        callToAction.close();
+    }
+
+    //view course list
+    const courseBtn = e.target.closest('.view-courses');
+    if (courseBtn) {
+
+        const parent = courseBtn.closest('form');
+        const courseList = parent.querySelector('#courses-list');
+    
+        if(!isCourseMenuOpen) {
+            const course = courseList.querySelectorAll('li');
+            courseList.style.visibility = 'visible';
+            displayCourse(course,parent);
+            isCourseMenuOpen = true;
+        }else {
+            courseList.style.visibility = 'hidden';
+            isCourseMenuOpen = false;
+
+        }
+    }
+
 })
 
-//displaying the course selected to the input
-function displayCourse() {
-    allCourses.forEach(course => {
+
+function displayCourse(element, input) {
+    element.forEach(course => {
         course.addEventListener('click', () => {
-            courseInput.value = course.innerHTML;
-            dropDownMenu.style.visibility = 'hidden';
+            const courseInput = input.querySelector('input[name="course"]');
+            courseInput.value = course.innerHTML; 
+            
+            //closing the list menu after selecting course
+            const courseList = input.querySelector('#courses-list');
+            courseList.style.visibility = 'hidden';
             isCourseMenuOpen = false;
         })
     });
@@ -103,8 +136,9 @@ function tableDisplay(obj) {
 }
 
 function dataSet(element) {
-    element.dataset.index = index;
-    index++;
+    for(let i = 0; i < studentInfo.length; i++) {
+        element.dataset.index = i;
+    }
 }
 
 // storing info
@@ -125,7 +159,7 @@ function addStudentInfo() {
     studentFile.studentNumber = parseInt(stuNumber.value);
     studentFile.course = courseInput.value;
     studentFile.email = stuEmail.value;
-    console.log(checkStatus);
+   
     //assigning attendance
    if(checkStatus) {
     studentFile.attendance = checkStatus.value;
@@ -136,7 +170,6 @@ function addStudentInfo() {
     
     // storing the object to array
     studentInfo.push(studentFile);
-    console.log(studentInfo);
    
     tableDisplay(studentFile);
     clearAfterSbmt();
@@ -167,57 +200,32 @@ function noDataRecord() {
     const noDataRecordText = document.querySelector('h3');
     if(studentInfo.length > 0) {
         noDataRecordText.style.display = 'none';
+    }else {
+        noDataRecordText.style.display = 'block';
     }
 }
-//editing student info
 
+//editing student info
+//creating edit & delete button
 function editStudentIcon() {
     let td = document.createElement('td');
     let edit = document.createElement('img');
     edit.src = './images/minus-circle-solid.svg';
     td.classList.add('edit-student');
-
+    td.appendChild(edit);
+    
     edit.addEventListener('click', (e) => {
         callToAction.show();
-        editInfo = e.target.closest('.rowInfo');
+       const currentRow = e.target.closest('tr');
+       currentRow.classList.add('edt');
+       console.log('edit',currentRow);
     });
-    
-    td.appendChild(edit);
     return td;
 }
 
-const editAllInfo = document.querySelector('#edit-btn');
-
-editAllInfo.addEventListener("click", (e) => { 
-    
-    if(studentInfo.length <= 0) {
-        e.preventDefault();
-        return;
-    }
-    
-    
-    if(!isEdited) {
-        editAllInfo.innerHTML = 'Close';
-        infoTable.classList.add('editing');
-        editIconColumn.style.display = 'block';
-        isEdited = true;
-    }else {
-        editAllInfo.innerHTML = 'Edit';
-        infoTable.classList.remove('editing');
-        editIconColumn.style.display = 'none';
-        isEdited = false;
-        
-    }
-}) 
-
 // edit student info through form
 
-editStudentInfo.addEventListener('click', () => {
-    callToAction.close();
-    const index = Number(editInfo.dataset.index);
-    editInfoOnForm(index);
-});
-
+//show editing form
 function editInfoOnForm(index) {
     const editFormInfo = document.querySelector('.edit-form');
     editFormInfo.show();
@@ -256,28 +264,59 @@ function editForm(index) {
             email: stuEmail.value,
             attendance: editingForm.querySelector("input[name='Attendance']:checked").value,
         }
-
-        studentInfo[index].attendance;
-        tableDisplay(studentInfo[index]);
-        editInfo.remove();
         editingForm.close();
-        console.log(studentInfo);
+        updateRowOrder();
     })
 }
 
-// deleting infomation
-const deleteTr = document.querySelector('#delete-btn');
+//updating row order
+function updateRowOrder() {
+    rowWrapper.innerHTML = '';
+    let editIcon = editStudentIcon();
+    studentInfo.forEach((trow, i) => {
+        const row = document.createElement('tr');
+        row.dataset.index = i;
 
-deleteTr.addEventListener('click', () => {
-    //deleting DOM elements
-    if(true) {
-        const objIndex = parseInt(deleteInfo.dataset.index);
-        alert('You are about to delete information that cannot be retrieved')
-        editInfo.remove();
-        studentInfo.splice(objIndex, 1);
+        row.innerHTML = `
+        <td>${trow.studentNumber}</td>
+        <td>${trow.name} ${trow.surname}</td>
+        <td>${trow.email}</td>
+        <td>${trow.course}</td>
+        <td>${trow.attendance}</td>
+        `;
+        
+        row.prepend(editStudentIcon());
+        rowWrapper.append(row);
+    });
+
+}
+
+// edit or deleting infomation
+
+const editDelWrap = document.querySelector('#edit-wrapper')
+editDelWrap.addEventListener('click', (e) => {
+
+    const closeRow = document.querySelector('.edt');
+    const dataSet = closeRow.dataset.index;
+    
+    if(e.target.classList == 'edit-student-info') {
+            
+        currentRow = closeRow;
+        currentIndex = dataSet;
+
+        editInfoOnForm(dataSet);
         callToAction.close();
+        currentRow.classList.remove('edt');
+            
+    }else if(e.target.classList == 'delete-btn') {
+        alert('You are about to delete information that cannot be retrieved');
+        studentInfo.splice(dataSet, 1);
+        updateRowOrder();
+        callToAction.close();
+            
     }
 })
+
 
 
 
